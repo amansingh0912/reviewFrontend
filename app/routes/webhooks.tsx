@@ -21,9 +21,14 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       }
 
       break;
+    case 'PRODUCTS_UPDATE':
+        console.log('product was updated');
+    case 'PRODUCTS_DELETE':
+       console.log('product was DELETED')   
     case "CUSTOMERS_DATA_REQUEST":
     case "CUSTOMERS_REDACT":
     case "SHOP_REDACT":
+
     default:
       throw new Response("Unhandled webhook topic", { status: 404 });
   }
