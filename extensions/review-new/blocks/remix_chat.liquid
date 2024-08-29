@@ -1,0 +1,428 @@
+{% assign avg_rating = block.settings.product.metafields.demo.avg_rating.value | round %}
+
+<style>
+  .particular-review-subheading{
+    display:flex;
+    gap:140px;
+  }
+.inside-rating-style{
+  display: flex;
+    gap: 43px;
+ 
+
+}
+.inside-rating-style1 div{
+  display:flex;
+  gap: 4px;
+}
+    .account-icon{
+      display: flex;
+    /* content: "\e007";
+    font-size: 24px;
+    color: #6E6E50;
+    margin-right: 8px; */
+  }
+  .review-content-style{
+    color:black;
+  }
+  .reviews-most-recent{
+    padding:10px 30px;
+    
+    margin-top: 24px;
+    border-bottom: 1px solid rgba(51,153,153,0.1);
+    border-top: 1px solid rgba(51,153,153,0.1);
+  }
+  .reviews-container{
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+    padding:30px;
+  }
+  .review-data{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(51,153,153,0.1);
+    padding-bottom: 26px;
+    color: #6e6e50;
+  }
+  .review-data .review-title{
+    color:black;
+    font-weight: bold;
+  }
+.review-container-style{
+  background-color: #fffbec;
+  padding: 6px 0px;
+}
+.review-star-style{
+  display:flex;
+  justify-content: center;
+}
+.review-button-style{
+  font-size: 20px;
+  color: white;
+  background: #fd8484;
+  display: flex;
+  border-radius: 18px;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+padding: 14px 33px;
+}
+.review-subcontainer-style{
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  /* align-content: center; */
+  gap: 151px;
+  flex-wrap: nowrap;
+    align-items: center;
+}
+
+.user-review{
+  display: flex;
+  justify-content: center;
+}
+.first-review-style{
+  color: black;
+  text-align: center;
+}
+
+@media (max-width:678px){
+  .review-subcontainer-style{
+    display:unset;
+    gap:8px;
+  }
+  .particular-review-subheading{
+    align-items: center;
+    flex-direction: column;
+    gap:10px;
+  }
+  .review-button-style{
+    margin-top:12px;
+    padding: 5px 26px;
+  }
+}
+@media(min-width:680px){
+  .review-subcontainer-style{
+   
+    gap:150px;
+
+  }
+}
+</style>
+<div>
+  <div class='review-container-style' data-productid = "{{product.id}}">
+     <h2 class="user-review"> Customer Reviews</h2>
+    <div>
+      <div class="review-subcontainer-style"> 
+        <div class="no-review-style">
+       <div class="review-star-style">
+        <div>
+          <svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M11.4434703,19.4783366 L7.11534027,21.8561884 C6.53071469,22.1773786 5.80762087,21.9424899 5.50026501,21.3315498 C5.3778743,21.0882703 5.3356403,20.8096129 5.38010133,20.5387172 L6.2067006,15.5023462 C6.27323987,15.0969303 6.14461904,14.6832584 5.86275418,14.3961413 L2.36122346,10.8293635 C1.88825143,10.3475782 1.87857357,9.55633639 2.33960735,9.06207547 C2.52319342,8.86525818 2.76374635,8.73717345 3.02402575,8.69765029 L7.8630222,7.96285367 C8.25254987,7.90370429 8.58928356,7.64804097 8.76348563,7.27918144 L10.9275506,2.69693973 C11.2198634,2.07798981 11.936976,1.82386417 12.5292664,2.12933421 C12.7651196,2.25097399 12.9560234,2.45047063 13.0724239,2.69693973 L15.2364889,7.27918144 C15.410691,7.64804097 15.7474247,7.90370429 16.1369524,7.96285367 L20.9759488,8.69765029 C21.6295801,8.79690353 22.0824579,9.43108706 21.9874797,10.1141388 C21.9496589,10.3861337 21.827091,10.6375141 21.6387511,10.8293635 L18.1372204,14.3961413 C17.8553555,14.6832584 17.7267347,15.0969303 17.793274,15.5023462 L18.6198732,20.5387172 C18.7315268,21.219009 18.2943081,21.8650816 17.6433179,21.9817608 C17.3840902,22.028223 17.1174353,21.984088 16.8846343,21.8561884 L12.5565043,19.4783366 C12.2081001,19.2869252 11.7918744,19.2869252 11.4434703,19.4783366 Z M10.4804474,17.7254569 C11.4285912,17.2045517 12.5713833,17.2045517 13.5195271,17.7254569 L16.3902376,19.3026102 L15.819679,15.8262644 C15.6504974,14.7954609 15.9786587,13.7400243 16.7100131,12.9950419 L19.2066263,10.4519072 L15.8366964,9.9401868 C14.7818036,9.78000242 13.8837002,9.09812209 13.4280265,8.13326784 L11.9999873,5.10950433 L10.5719481,8.13326784 C10.1162743,9.09812209 9.21817098,9.78000242 8.1632782,9.9401868 L4.79334826,10.4519072 L7.28996143,12.9950419 C8.02131584,13.7400243 8.34947716,14.7954609 8.18029555,15.8262644 L7.60973692,19.3026102 L10.4804474,17.7254569 Z"/>
+        </svg>
+        </div>
+        <div><svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M11.4434703,19.4783366 L7.11534027,21.8561884 C6.53071469,22.1773786 5.80762087,21.9424899 5.50026501,21.3315498 C5.3778743,21.0882703 5.3356403,20.8096129 5.38010133,20.5387172 L6.2067006,15.5023462 C6.27323987,15.0969303 6.14461904,14.6832584 5.86275418,14.3961413 L2.36122346,10.8293635 C1.88825143,10.3475782 1.87857357,9.55633639 2.33960735,9.06207547 C2.52319342,8.86525818 2.76374635,8.73717345 3.02402575,8.69765029 L7.8630222,7.96285367 C8.25254987,7.90370429 8.58928356,7.64804097 8.76348563,7.27918144 L10.9275506,2.69693973 C11.2198634,2.07798981 11.936976,1.82386417 12.5292664,2.12933421 C12.7651196,2.25097399 12.9560234,2.45047063 13.0724239,2.69693973 L15.2364889,7.27918144 C15.410691,7.64804097 15.7474247,7.90370429 16.1369524,7.96285367 L20.9759488,8.69765029 C21.6295801,8.79690353 22.0824579,9.43108706 21.9874797,10.1141388 C21.9496589,10.3861337 21.827091,10.6375141 21.6387511,10.8293635 L18.1372204,14.3961413 C17.8553555,14.6832584 17.7267347,15.0969303 17.793274,15.5023462 L18.6198732,20.5387172 C18.7315268,21.219009 18.2943081,21.8650816 17.6433179,21.9817608 C17.3840902,22.028223 17.1174353,21.984088 16.8846343,21.8561884 L12.5565043,19.4783366 C12.2081001,19.2869252 11.7918744,19.2869252 11.4434703,19.4783366 Z M10.4804474,17.7254569 C11.4285912,17.2045517 12.5713833,17.2045517 13.5195271,17.7254569 L16.3902376,19.3026102 L15.819679,15.8262644 C15.6504974,14.7954609 15.9786587,13.7400243 16.7100131,12.9950419 L19.2066263,10.4519072 L15.8366964,9.9401868 C14.7818036,9.78000242 13.8837002,9.09812209 13.4280265,8.13326784 L11.9999873,5.10950433 L10.5719481,8.13326784 C10.1162743,9.09812209 9.21817098,9.78000242 8.1632782,9.9401868 L4.79334826,10.4519072 L7.28996143,12.9950419 C8.02131584,13.7400243 8.34947716,14.7954609 8.18029555,15.8262644 L7.60973692,19.3026102 L10.4804474,17.7254569 Z"/>
+        </svg></div>
+        <div><svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M11.4434703,19.4783366 L7.11534027,21.8561884 C6.53071469,22.1773786 5.80762087,21.9424899 5.50026501,21.3315498 C5.3778743,21.0882703 5.3356403,20.8096129 5.38010133,20.5387172 L6.2067006,15.5023462 C6.27323987,15.0969303 6.14461904,14.6832584 5.86275418,14.3961413 L2.36122346,10.8293635 C1.88825143,10.3475782 1.87857357,9.55633639 2.33960735,9.06207547 C2.52319342,8.86525818 2.76374635,8.73717345 3.02402575,8.69765029 L7.8630222,7.96285367 C8.25254987,7.90370429 8.58928356,7.64804097 8.76348563,7.27918144 L10.9275506,2.69693973 C11.2198634,2.07798981 11.936976,1.82386417 12.5292664,2.12933421 C12.7651196,2.25097399 12.9560234,2.45047063 13.0724239,2.69693973 L15.2364889,7.27918144 C15.410691,7.64804097 15.7474247,7.90370429 16.1369524,7.96285367 L20.9759488,8.69765029 C21.6295801,8.79690353 22.0824579,9.43108706 21.9874797,10.1141388 C21.9496589,10.3861337 21.827091,10.6375141 21.6387511,10.8293635 L18.1372204,14.3961413 C17.8553555,14.6832584 17.7267347,15.0969303 17.793274,15.5023462 L18.6198732,20.5387172 C18.7315268,21.219009 18.2943081,21.8650816 17.6433179,21.9817608 C17.3840902,22.028223 17.1174353,21.984088 16.8846343,21.8561884 L12.5565043,19.4783366 C12.2081001,19.2869252 11.7918744,19.2869252 11.4434703,19.4783366 Z M10.4804474,17.7254569 C11.4285912,17.2045517 12.5713833,17.2045517 13.5195271,17.7254569 L16.3902376,19.3026102 L15.819679,15.8262644 C15.6504974,14.7954609 15.9786587,13.7400243 16.7100131,12.9950419 L19.2066263,10.4519072 L15.8366964,9.9401868 C14.7818036,9.78000242 13.8837002,9.09812209 13.4280265,8.13326784 L11.9999873,5.10950433 L10.5719481,8.13326784 C10.1162743,9.09812209 9.21817098,9.78000242 8.1632782,9.9401868 L4.79334826,10.4519072 L7.28996143,12.9950419 C8.02131584,13.7400243 8.34947716,14.7954609 8.18029555,15.8262644 L7.60973692,19.3026102 L10.4804474,17.7254569 Z"/>
+        </svg></div>
+        <div><svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M11.4434703,19.4783366 L7.11534027,21.8561884 C6.53071469,22.1773786 5.80762087,21.9424899 5.50026501,21.3315498 C5.3778743,21.0882703 5.3356403,20.8096129 5.38010133,20.5387172 L6.2067006,15.5023462 C6.27323987,15.0969303 6.14461904,14.6832584 5.86275418,14.3961413 L2.36122346,10.8293635 C1.88825143,10.3475782 1.87857357,9.55633639 2.33960735,9.06207547 C2.52319342,8.86525818 2.76374635,8.73717345 3.02402575,8.69765029 L7.8630222,7.96285367 C8.25254987,7.90370429 8.58928356,7.64804097 8.76348563,7.27918144 L10.9275506,2.69693973 C11.2198634,2.07798981 11.936976,1.82386417 12.5292664,2.12933421 C12.7651196,2.25097399 12.9560234,2.45047063 13.0724239,2.69693973 L15.2364889,7.27918144 C15.410691,7.64804097 15.7474247,7.90370429 16.1369524,7.96285367 L20.9759488,8.69765029 C21.6295801,8.79690353 22.0824579,9.43108706 21.9874797,10.1141388 C21.9496589,10.3861337 21.827091,10.6375141 21.6387511,10.8293635 L18.1372204,14.3961413 C17.8553555,14.6832584 17.7267347,15.0969303 17.793274,15.5023462 L18.6198732,20.5387172 C18.7315268,21.219009 18.2943081,21.8650816 17.6433179,21.9817608 C17.3840902,22.028223 17.1174353,21.984088 16.8846343,21.8561884 L12.5565043,19.4783366 C12.2081001,19.2869252 11.7918744,19.2869252 11.4434703,19.4783366 Z M10.4804474,17.7254569 C11.4285912,17.2045517 12.5713833,17.2045517 13.5195271,17.7254569 L16.3902376,19.3026102 L15.819679,15.8262644 C15.6504974,14.7954609 15.9786587,13.7400243 16.7100131,12.9950419 L19.2066263,10.4519072 L15.8366964,9.9401868 C14.7818036,9.78000242 13.8837002,9.09812209 13.4280265,8.13326784 L11.9999873,5.10950433 L10.5719481,8.13326784 C10.1162743,9.09812209 9.21817098,9.78000242 8.1632782,9.9401868 L4.79334826,10.4519072 L7.28996143,12.9950419 C8.02131584,13.7400243 8.34947716,14.7954609 8.18029555,15.8262644 L7.60973692,19.3026102 L10.4804474,17.7254569 Z"/>
+        </svg></div>
+        <div><svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M11.4434703,19.4783366 L7.11534027,21.8561884 C6.53071469,22.1773786 5.80762087,21.9424899 5.50026501,21.3315498 C5.3778743,21.0882703 5.3356403,20.8096129 5.38010133,20.5387172 L6.2067006,15.5023462 C6.27323987,15.0969303 6.14461904,14.6832584 5.86275418,14.3961413 L2.36122346,10.8293635 C1.88825143,10.3475782 1.87857357,9.55633639 2.33960735,9.06207547 C2.52319342,8.86525818 2.76374635,8.73717345 3.02402575,8.69765029 L7.8630222,7.96285367 C8.25254987,7.90370429 8.58928356,7.64804097 8.76348563,7.27918144 L10.9275506,2.69693973 C11.2198634,2.07798981 11.936976,1.82386417 12.5292664,2.12933421 C12.7651196,2.25097399 12.9560234,2.45047063 13.0724239,2.69693973 L15.2364889,7.27918144 C15.410691,7.64804097 15.7474247,7.90370429 16.1369524,7.96285367 L20.9759488,8.69765029 C21.6295801,8.79690353 22.0824579,9.43108706 21.9874797,10.1141388 C21.9496589,10.3861337 21.827091,10.6375141 21.6387511,10.8293635 L18.1372204,14.3961413 C17.8553555,14.6832584 17.7267347,15.0969303 17.793274,15.5023462 L18.6198732,20.5387172 C18.7315268,21.219009 18.2943081,21.8650816 17.6433179,21.9817608 C17.3840902,22.028223 17.1174353,21.984088 16.8846343,21.8561884 L12.5565043,19.4783366 C12.2081001,19.2869252 11.7918744,19.2869252 11.4434703,19.4783366 Z M10.4804474,17.7254569 C11.4285912,17.2045517 12.5713833,17.2045517 13.5195271,17.7254569 L16.3902376,19.3026102 L15.819679,15.8262644 C15.6504974,14.7954609 15.9786587,13.7400243 16.7100131,12.9950419 L19.2066263,10.4519072 L15.8366964,9.9401868 C14.7818036,9.78000242 13.8837002,9.09812209 13.4280265,8.13326784 L11.9999873,5.10950433 L10.5719481,8.13326784 C10.1162743,9.09812209 9.21817098,9.78000242 8.1632782,9.9401868 L4.79334826,10.4519072 L7.28996143,12.9950419 C8.02131584,13.7400243 8.34947716,14.7954609 8.18029555,15.8262644 L7.60973692,19.3026102 L10.4804474,17.7254569 Z"/>
+        </svg></div>
+        </div>
+         <div class="first-review-style">Be the first to write a review</div>
+        </div>
+        <div class="showing-avg-reviews">
+       
+           
+        </div>
+        <div class="review-button-style write-review" onclick="writeReviewOpen()">WRITE A REVIEW</div>
+        <div class="review-button-style cancel-review" onclick="cancelReviewOpen()">CANCEL REVIEW</div>
+        <div class="review-button-style refresh-review" onclick="refreshPage()">REFRESH PAGE</div>
+      </div>
+
+       {% render 'review'%}
+ </div>
+  <div class="reviews-most-recent">
+    Most Recent 
+  </div>
+  
+  <div class="reviews-container">
+    <!-- Review Data will be dynamically added here -->
+  </div>
+</div>
+</div>
+ 
+<script>
+  console.log("inside review script");
+   const reviewElement= document.querySelector('.review-component-style');
+   const writeElement= document.querySelector('.write-review');
+   const cancelElement=document.querySelector('.cancel-review')
+   const refreshElement=document.querySelector('.refresh-review')
+   const showingAvgElement= document.querySelector('.showing-avg-reviews');
+   const showNoReviewElement= document.querySelector('.no-review-style');
+   const mostRecentReviewElement= document.querySelector('.reviews-most-recent');
+
+   reviewElement.style.display='none';
+   cancelElement.style.display='none';
+   refreshElement.style.display='none';
+   mostRecentReviewElement.style.display='none';
+   
+
+   function writeReviewOpen(){
+      reviewElement.style.display='block';
+      writeElement.style.display='none';
+      cancelElement.style.display='flex';
+   }
+   function cancelReviewOpen(){
+      reviewElement.style.display='none';
+      writeElement.style.display='flex';
+      cancelElement.style.display='none';
+   }
+
+   function refreshPage(){
+    location.reload(); // Reloads the current page
+   }
+
+  const productElement = document.querySelector('.review-container-style');
+     console.log("product Element",productElement)
+    let productid = productElement ? productElement.dataset.productid : null;
+    console.log(" productijg", productid )
+
+    const reviewsContainer = document.querySelector('.reviews-container');
+
+const account=`
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="#6E6E50"><path d="M480-480q-66 0-113-47t-47-113 47-113 113-47 113 47 47 113-47 113-113 47M160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440t130 15.5T736-378q29 15 46.5 43.5T800-272v112zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360t-111 13.5T260-306q-9 5-14.5 14t-5.5 20zm240-320q33 0 56.5-23.5T560-640t-23.5-56.5T480-720t-56.5 23.5T400-640t23.5 56.5T480-560m0 320"/></svg>
+`
+
+
+    const filledStarSVG = `
+<svg fill="#fff" height="20" width="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 11.23 473.486 451.027" xml:space="preserve"><g stroke-width="48"/><g stroke-linecap="round" stroke-linejoin="round"/><path fill="#6e6e50" stroke="#6e6e50" stroke-width="48" d="m473.486 182.079-162.871-24.127L235.904 11.23l-73.276 147.445L0 184.389l117.584 115.252-25.798 162.616 145.946-76.215 146.684 74.787-27.384-162.356z"/></svg>
+`;
+
+// SVG Star Icon (Unfilled)
+const unfilledStarSVG = `
+<svg fill="#fff" height="20" width="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 11.23 473.486 451.027" xml:space="preserve"><g stroke-width="48"/><g stroke-linecap="round" stroke-linejoin="round"/><path fill="#FFf" stroke="#000" stroke-width="48" d="m473.486 182.079-162.871-24.127L235.904 11.23l-73.276 147.445L0 184.389l117.584 115.252-25.798 162.616 145.946-76.215 146.684 74.787-27.384-162.356z"/></svg>
+`;
+
+// SVG Star Icon (Half-filled)
+const halfStarSVG = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 16.211" xml:space="preserve" width="19" height="20"><defs><linearGradient id="a" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="50%" style="stop-color:#6e6e50;stop-opacity:1"/><stop offset="50%" style="stop-color:#fff;stop-opacity:1"/></linearGradient></defs><path fill="url(#a)" d="m8.91.272 2.174 5.087 5.51.493a.442.442 0 0 1 .253.778l-4.17 3.64 1.231 5.396a.442.442 0 0 1-.677.469l-4.74-2.832-4.752 2.844a.442.442 0 0 1-.658-.48l1.233-5.396L.143 6.63a.446.446 0 0 1-.045-.626.46.46 0 0 1 .317-.146l5.497-.493L8.09.272a.44.44 0 0 1 .581-.234.43.43 0 0 1 .24.234" stroke="#6E6E50"/></svg>
+`;
+
+// SVG Star Icon (Filled)
+// const filledStarSVG = `
+//  <svg fill="#fff" height="20" width="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 11.23 473.486 451.027" xml:space="preserve"><g stroke-width="48"/><g stroke-linecap="round" stroke-linejoin="round"/><path fill="#6e6e50" stroke="#6e6e50" stroke-width="48" d="m473.486 182.079-162.871-24.127L235.904 11.23l-73.276 147.445L0 184.389l117.584 115.252-25.798 162.616 145.946-76.215 146.684 74.787-27.384-162.356z"/></svg>     
+
+// `;
+
+// SVG Star Icon (Unfilled)
+// const unfilledStarSVG = `
+//                         <svg fill="#fff" height="20" width="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 11.23 473.486 451.027" xml:space="preserve"><g stroke-width="48"/><g stroke-linecap="round" stroke-linejoin="round"/><path fill="#FFf" stroke="#000" stroke-width="48" d="m473.486 182.079-162.871-24.127L235.904 11.23l-73.276 147.445L0 184.389l117.584 115.252-25.798 162.616 145.946-76.215 146.684 74.787-27.384-162.356z"/></svg>     
+// `;
+
+// Fetch reviews from backend API
+fetch('https://reviewbackend-fv00.onrender.com/api/v1/course/getReviews', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ productid: productid })
+})
+.then(response => response.json())
+.then(data => {
+  if (data.success && data.data.length > 0) {
+
+    showNoReviewElement.style.display='none';
+    mostRecentReviewElement.style.display='block';
+
+    data.data.forEach(review => {
+      const reviewDiv = document.createElement('div');
+      reviewDiv.classList.add('review-data');
+
+      // Generate star SVGs based on the rating
+      const stars = Array.from({ length: 5 }, (_, i) => i < review.rating ? filledStarSVG : unfilledStarSVG).join('');
+
+      reviewDiv.innerHTML = `
+        <div>
+          <div>${stars}</div>
+          <div class="account-icon">${account}   ${review.name || 'Anonymous'}</div>
+          <div class="review-title"> ${review.reviewTitle || 'No Title'}</div>
+          <div class="review-content-style">${review.review || 'No content provided.'}</div>
+          <div>${review.imageUrls ? review.imageUrls.map(url => `<img src="${url}" alt="Review Image" style="width: 163px; height: 96px; object-fit: cover; margin-right: 5px;" />`).join('') : 'No images'}</div>
+        </div>
+        <div>
+           ${new Date(review.createdAt).toLocaleDateString()}
+        </div>
+      `;
+
+      reviewsContainer.appendChild(reviewDiv);
+    });
+  } else {
+    showNoReviewElement.style.display='block';
+    mostRecentReviewElement.style.display='none';
+  }
+})
+.catch(error => {
+  console.error('Error fetching reviews:', error);
+
+});
+
+
+// Helper function to generate the star rating
+function generateStars(avgRating) {
+  let stars = '';
+  const fullStars = Math.floor(avgRating); // Count of full stars
+  const halfStar = avgRating % 1 >= 0.5; // Determine if a half star is needed
+  const emptyStars = 5 - fullStars - (halfStar ? 1 : 0); // Count of empty stars
+
+  // Add full stars
+  stars += filledStarSVG.repeat(fullStars);
+  
+  // Add half star if needed
+  if (halfStar) {
+    stars += halfStarSVG;
+  }
+  
+  // Add empty stars
+  stars += unfilledStarSVG.repeat(emptyStars);
+
+  return stars;
+}
+
+// getting average rating
+
+fetch('https://reviewbackend-fv00.onrender.com/api/v1/course/getAverageRating', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json' // Inform the server that the request body is in JSON format
+    },
+    body: JSON.stringify({ productid: productid })// Pass the JSON string as the body
+})
+.then(response => response.json())
+.then(data => {
+    console.log('Success: average rating', data);
+  if(data.success){
+      const particularRatingDiv=document.createElement('div');
+      particularRatingDiv.classList.add("particular-review-data")
+     particularRatingDiv.innerHTML=`
+         <div class="particular-review-subheading">
+         <div>
+         <div>
+          ${generateStars(data.avgRating)}
+         ${data.avgRating} out of 5 
+         </div>
+         <div>
+          Based on ${data.totalReview} reviews
+         </div>
+        
+         </div>
+      
+         <div >
+            <div class="inside-rating-style inside-rating-style1">
+           <div> ${filledStarSVG }${filledStarSVG }${filledStarSVG }${filledStarSVG }${filledStarSVG }</div>
+           <div>
+             ${data.data.ratingFive}
+           </div>
+         
+           </div>
+           <div class="inside-rating-style inside-rating-style1">
+           <div>${filledStarSVG }${filledStarSVG }${filledStarSVG }${filledStarSVG }${unfilledStarSVG}</div>
+           <div>  ${data.data.ratingFour}</div>
+          
+           </div>
+           <div class="inside-rating-style inside-rating-style1">
+           <div>${filledStarSVG }${filledStarSVG }${filledStarSVG }${unfilledStarSVG}${unfilledStarSVG}</div>
+            <div>  ${data.data.ratingThree}</div>
+         
+           </div>
+           <div class="inside-rating-style inside-rating-style1">
+           <div>${filledStarSVG }${filledStarSVG }${unfilledStarSVG}${unfilledStarSVG}${unfilledStarSVG}</div>
+           <div>${data.data.ratingTwo}</div>
+           
+           </div>
+           <div class="inside-rating-style inside-rating-style1">
+           <div> ${filledStarSVG }${unfilledStarSVG}${unfilledStarSVG}${unfilledStarSVG}${unfilledStarSVG}</div>
+             <div> ${data.data.ratingOne}</div>
+          
+           </div>
+           </div>
+              </div>
+     `;
+     showingAvgElement.appendChild(particularRatingDiv)
+  }
+  else{
+    
+
+  }
+})
+.catch(error => {
+  console.error('Error fetching average reviews:', error);
+ 
+});
+
+//getting each product reviews 
+
+
+
+// fetch('https://reviewbackend-fv00.onrender.com/api/v1/course/getReviews', {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify({ productid: productid })
+// })
+// .then(response => response.json())
+// .then(data => {
+//   if (data.success && data.data.length > 0) {
+//     console.log("hdataaa",data)
+
+//   } else {
+
+//   }
+// })
+// .catch(error => {
+//   console.error('Error fetching reviews:', error);
+ 
+// });
+
+
+
+
+
+
+//     const requestBody = 
+
+// fetch('http://localhost:4000/api/v1/course/getReviews', {
+//     method: 'POST',
+//     headers: {
+//         'Content-Type': 'application/json' // Inform the server that the request body is in JSON format
+//     },
+//     body: JSON.stringify({ productid: productid })// Pass the JSON string as the body
+// })
+// .then(response => response.json())
+// .then(data => {
+//     console.log('Success:', data);
+// })
+
+
+</script>
+
+
+
+{% schema %}
+{
+  "name": "review app",
+    "target": "section",
+  "settings": [
+   
+    { "type": "color", "id": "colour", "label": "Star Colour", "default": "#ff0000" }
+  ]
+}
+{% endschema %}
+

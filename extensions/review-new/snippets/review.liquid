@@ -1,0 +1,382 @@
+  <style>
+        /* styles.css */
+        .file-upload {
+            margin-bottom: 20px;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        .file-upload label {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 800px;
+        }
+
+        .preview-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            width: 150px;
+            height: 150px;
+            background-color: #fff;
+        }
+
+        .preview-item img, 
+        .preview-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .delete-preview {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            text-align: center;
+        }
+
+        .review-component-style {
+            display: flex;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            flex-direction: column;
+            align-items: center;
+            gap: 19px;
+        }
+
+        .review-filling-heading {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .review-filling-data,
+        .review-filling-data1 {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .review-filling-data input,
+        .review-filling-data1 textarea {
+            width: 50%;
+            outline: none;
+            box-shadow: none;
+        }
+
+        .review-filling-data input {
+            height: 38px;
+        }
+
+        .review-filling-data1 textarea {
+            height: 104px;
+        }
+
+        .review-star-style {
+            gap: 4px;
+        }
+
+        .review-writting {
+            color: black;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .rating-style {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .review-button-styling {
+            display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+        }
+
+        .cancel-review-style {
+            color: #6e6e50;
+            background: white;
+            padding: 8px 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .submit-review-style {
+            border: unset;
+            background: #6e6e50;
+            color: white;
+            padding: 8px 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .review-style-section{
+            display: flex;
+    flex-direction: column;
+    gap: 24px;
+        }
+    </style>
+
+
+<form id="userinfo">
+    <div class="review-component-style">
+        <div class="review-writting">Write a Reviews</div>
+        <div class="review-style-section">
+        <div class="rating-style">
+            <div>Ratings</div> 
+            <div class="review-star-style review-stars-rating" onmouseout="maintainCurrentState()">
+                <div id="1" onmouseover="ratingHover(1)" onclick="myRating(1)">
+                    <svg fill="#fff" height="20" width="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 11.23 473.486 451.027" xml:space="preserve"><g stroke-width="48"/><g stroke-linecap="round" stroke-linejoin="round"/><path fill="#FFf" stroke="#000" stroke-width="48" d="m473.486 182.079-162.871-24.127L235.904 11.23l-73.276 147.445L0 184.389l117.584 115.252-25.798 162.616 145.946-76.215 146.684 74.787-27.384-162.356z"/></svg>     
+                </div>
+                <div id="2" onmouseover="ratingHover(2)" onclick="myRating(2)">
+                    <svg fill="#fff" height="20" width="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 11.23 473.486 451.027" xml:space="preserve"><g stroke-width="48"/><g stroke-linecap="round" stroke-linejoin="round"/><path fill="#FFf" stroke="#000" stroke-width="48" d="m473.486 182.079-162.871-24.127L235.904 11.23l-73.276 147.445L0 184.389l117.584 115.252-25.798 162.616 145.946-76.215 146.684 74.787-27.384-162.356z"/></svg>     
+                </div>
+                <div id="3" onmouseover="ratingHover(3)" onclick="myRating(3)">
+                    <svg fill="#fff" height="20" width="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 11.23 473.486 451.027" xml:space="preserve"><g stroke-width="48"/><g stroke-linecap="round" stroke-linejoin="round"/><path fill="#FFf" stroke="#000" stroke-width="48" d="m473.486 182.079-162.871-24.127L235.904 11.23l-73.276 147.445L0 184.389l117.584 115.252-25.798 162.616 145.946-76.215 146.684 74.787-27.384-162.356z"/></svg>     
+                </div>
+                <div id="4" onmouseover="ratingHover(4)" onclick="myRating(4)">
+                    <svg fill="#fff" height="20" width="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 11.23 473.486 451.027" xml:space="preserve"><g stroke-width="48"/><g stroke-linecap="round" stroke-linejoin="round"/><path fill="#FFf" stroke="#000" stroke-width="48" d="m473.486 182.079-162.871-24.127L235.904 11.23l-73.276 147.445L0 184.389l117.584 115.252-25.798 162.616 145.946-76.215 146.684 74.787-27.384-162.356z"/></svg>     
+                </div>
+                <div id="5" onmouseover="ratingHover(5)" onclick="myRating(5)">
+                    <svg fill="#fff" height="20" width="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 11.23 473.486 451.027" xml:space="preserve"><g stroke-width="48"/><g stroke-linecap="round" stroke-linejoin="round"/><path fill="#FFf" stroke="#000" stroke-width="48" d="m473.486 182.079-162.871-24.127L235.904 11.23l-73.276 147.445L0 184.389l117.584 115.252-25.798 162.616 145.946-76.215 146.684 74.787-27.384-162.356z"/></svg>     
+                </div>
+            </div>
+        </div>
+        <div class="review-filling-heading">
+            <div>Review Title</div>
+            <div class="review-filling-data">
+                <input type="text" name="reviewTitle" placeholder="Give your review a title" >
+            </div>
+        </div>
+        <div class="review-filling-heading">
+            <div>Review</div>
+            <div class="review-filling-data1">
+                <textarea name="review" placeholder="Write your comment here" rows="4" cols="50" ></textarea>
+            </div>
+        </div>
+        <div class="review-filling-heading">
+            <div>Picture/Videos (optional)</div>
+            <div>
+                <div class="file-upload">
+                    <input type="file" id="file-input" multiple accept="image/*,video/*">
+                    <label for="file-input">Choose files</label>
+                </div>
+                <div id="preview"></div>
+            </div>
+        </div>
+        <div  class="review-filling-heading" >
+            <div>Name</div>
+            <div class="review-filling-data">
+                <input type="text" name="name" placeholder="Enter your name (public)" required>
+            </div>
+        </div> 
+        <div  class="review-filling-heading">
+            <div>Email</div>
+            <div class="review-filling-data">
+                <input type="email" name="email" placeholder="Enter your email (public)" required>
+            </div>
+        </div>
+        <div class="review-filling-data">  
+                <div style="
+                width: 50%;
+                text-align: center;
+            ">
+                    How we use your data: We’ll only contact you about the review you left, and only if necessary. By submitting your review, you agree to Judge.me’s terms, privacy, and content policies.
+    
+                </div>
+            </div> 
+        <div class="review-button-styling ">
+            <button class="cancel-review-style" type="button" onclick="cancelReviewOpen()">Cancel Review</button>
+            <button class="submit-review-style" type="submit">Submit Review</button>
+        </div>
+        </div>
+    </div>
+</form>
+
+<script>
+ let selectedFiles = [];
+
+document.getElementById('file-input').addEventListener('change', function(event) {
+    const files = Array.from(event.target.files);
+    const previewContainer = document.getElementById('preview');
+
+    // Add new files to the selectedFiles array
+    selectedFiles.push(...files);
+
+    files.forEach(file => {
+        const previewItem = document.createElement('div');
+        previewItem.classList.add('preview-item');
+
+        if (file.type.startsWith('image/')) {
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(file);
+            img.onload = () => URL.revokeObjectURL(img.src); // Free memory
+            previewItem.appendChild(img);
+        } else if (file.type.startsWith('video/')) {
+            const video = document.createElement('video');
+            video.src = URL.createObjectURL(file);
+            video.controls = true;
+            video.onload = () => URL.revokeObjectURL(video.src); // Free memory
+            previewItem.appendChild(video);
+        }
+
+        // Add delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-preview');
+        deleteButton.textContent = '×';
+        deleteButton.onclick = () => removePreviewItem(previewItem, file);
+        previewItem.appendChild(deleteButton);
+
+        previewContainer.appendChild(previewItem);
+    });
+
+    // Update the file input element with the selected files
+    updateFileInput();
+});
+
+function removePreviewItem(previewItem, file) {
+    previewItem.remove();
+    
+    // Remove the file from the selectedFiles array
+    selectedFiles = selectedFiles.filter(f => f !== file);
+    
+    // Update the file input element with the selected files
+    updateFileInput();
+}
+
+function updateFileInput() {
+    const dataTransfer = new DataTransfer();
+    selectedFiles.forEach(f => dataTransfer.items.add(f));
+    document.getElementById('file-input').files = dataTransfer.files;
+}
+
+function cancelReview() {
+    document.getElementById('userinfo').reset();
+    document.getElementById('preview').innerHTML = '';
+    selectedFiles = []; // Reset the selected files array
+    updateFileInput();
+}
+let currentState = 0;
+
+function myRating(id) {
+    currentState = id;
+}
+
+function ratingHover(id) {
+    let stars = document.querySelectorAll('.review-stars-rating div svg path');
+
+    for (let i = 0; i < id; i++) {
+        stars[i].style.fill = '#6e6e50';
+        stars[i].style.stroke = '#6e6e50';
+    }
+    for (let i = id; i < 5; i++) {
+        stars[i].style.fill = '#fff';
+        stars[i].style.stroke = '#000';
+    }
+}
+
+function maintainCurrentState() {
+    let stars = document.querySelectorAll('.review-stars-rating div svg path');
+    for (let i = 0; i < currentState; i++) {
+        stars[i].style.fill = '#a8a68e';
+        stars[i].style.stroke = '#a8a68e';
+    }
+    for (let i = currentState; i < 5; i++) {
+        stars[i].style.fill = '#fff';
+        stars[i].style.stroke = '#000';
+    }
+}
+
+const form = document.querySelector("#userinfo");
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (currentState === 0) {
+        alert('Please select a rating before submitting your review.');
+        return false;
+    }
+    
+    const writeElement= document.querySelector('.write-review');
+   const cancelElement=document.querySelector('.cancel-review')
+   const refreshElement=document.querySelector('.refresh-review')
+
+    const formData = new FormData(form);
+    formData.append('rating', currentState);
+     // If there's a specific product ID to include
+     const productElement = document.querySelector('.review-container-style');
+     console.log("product Element",productElement)
+    const productid = productElement ? productElement.dataset.productid : null;
+    console.log(" productid ", productid )
+    if (productid) {
+        formData.append('productid', productid);
+        console.log(" productidddd ", productid )
+    }
+
+    const fileInput = document.getElementById('file-input');
+
+    Array.from(fileInput.files).forEach(file => {
+        console.log("file name",file.name)
+        formData.append('files[]', file);
+    });
+
+    // Debug: Log FormData entries to ensure files are included
+    console.log('FormData entries:');
+    for (let [key, value] of formData.entries()) {
+        if (value instanceof File) {
+            console.log(`${key}: ${value.name}`);
+        } else {
+            console.log(`${key}: ${value}`);
+        }
+    }
+
+    fetch('https://reviewbackend-fv00.onrender.com/api/v1/course/createRating', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        form.reset(); // Option 1: Reset the form fields
+        form.style.display = 'none'; // Option 2: Hide the form
+        cancelElement.style.display='none';
+        console.log("refreshElement",  refreshElement)
+        refreshElement.style.display='flex';
+        console.log("refreshElement ffff",  refreshElement)
+        writeElement.style.display='none';
+   
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+});
+
+
+</script>
+
+

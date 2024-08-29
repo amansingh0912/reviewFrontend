@@ -1,0 +1,33 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "7a69f080526f1e581a394322434623dc"
+name = "review-new"
+handle = "review-new"
+application_url = "https://momentum-webpage-arnold-location.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "gauravcheckout.myshopify.com"
+include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_inventory,read_products,write_customers,write_discounts,write_products"
+
+[auth]
+redirect_urls = [
+  "https://momentum-webpage-arnold-location.trycloudflare.com/auth/callback",
+  "https://momentum-webpage-arnold-location.trycloudflare.com/auth/shopify/callback",
+  "https://momentum-webpage-arnold-location.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-07"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks"
+
+[pos]
+embedded = false
