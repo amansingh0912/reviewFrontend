@@ -3,7 +3,7 @@
 client_id = "7a69f080526f1e581a394322434623dc"
 name = "review-new"
 handle = "review-new"
-application_url = "https://momentum-webpage-arnold-location.trycloudflare.com"
+application_url = "https://squad-democracy-concert-informal.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,17 +17,20 @@ scopes = "read_inventory,read_products,write_customers,write_discounts,write_pro
 
 [auth]
 redirect_urls = [
-  "https://momentum-webpage-arnold-location.trycloudflare.com/auth/callback",
-  "https://momentum-webpage-arnold-location.trycloudflare.com/auth/shopify/callback",
-  "https://momentum-webpage-arnold-location.trycloudflare.com/api/auth/callback"
+  "https://squad-democracy-concert-informal.trycloudflare.com/auth/callback",
+  "https://squad-democracy-concert-informal.trycloudflare.com/auth/shopify/callback",
+  "https://squad-democracy-concert-informal.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
 api_version = "2024-07"
 
   [[webhooks.subscriptions]]
+  compliance_topics = ["customers/data_request", "customers/redact", "shop/redact"]
   topics = [ "app/uninstalled" ]
-  uri = "/webhooks"
+  uri = "https://reviewfrontend.onrender/webhooks"
 
 [pos]
 embedded = false
+
+
