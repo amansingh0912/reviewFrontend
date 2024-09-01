@@ -3,7 +3,7 @@
 client_id = "7a69f080526f1e581a394322434623dc"
 name = "review-new"
 handle = "review-new"
-application_url = "https://alpha-lease-carroll-share.trycloudflare.com"
+application_url = "https://muscle-exhaust-encourages-blanket.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_inventory,read_products,write_customers,write_discounts,write_pro
 
 [auth]
 redirect_urls = [
-  "https://alpha-lease-carroll-share.trycloudflare.com/auth/callback",
-  "https://alpha-lease-carroll-share.trycloudflare.com/auth/shopify/callback",
-  "https://alpha-lease-carroll-share.trycloudflare.com/api/auth/callback"
+  "https://muscle-exhaust-encourages-blanket.trycloudflare.com/auth/callback",
+  "https://muscle-exhaust-encourages-blanket.trycloudflare.com/auth/shopify/callback",
+  "https://muscle-exhaust-encourages-blanket.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
