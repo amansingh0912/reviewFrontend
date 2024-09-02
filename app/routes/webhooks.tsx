@@ -23,11 +23,19 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       break;
     case 'PRODUCTS_UPDATE':
         console.log('product was updated');
+        return new Response("PRODUCTS_UPDATE handled successfully", { status: 200 });
     case 'PRODUCTS_DELETE':
        console.log('product was DELETED')   
+       return new Response("PRODUCTS_DELETE handled successfully", { status: 200 });
     case "CUSTOMERS_DATA_REQUEST":
+      console.log('product CUSTOMERS_DATA_')   
+      return new Response("CUSTOMERS_DATA_REQUEST handled successfully", { status: 200 });
     case "CUSTOMERS_REDACT":
+      console.log('Customers data redacted');
+      return new Response("CUSTOMERS_REDACT handled successfully", { status: 200 });
     case "SHOP_REDACT":
+      console.log('Shop data redacted');
+      return new Response("SHOP_REDACT handled successfully", { status: 200 });  
 
     default:
       throw new Response("Unhandled webhook topic", { status: 404 });
