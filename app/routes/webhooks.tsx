@@ -3,6 +3,7 @@ import { authenticate } from "../shopify.server";
 import db from "../db.server";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
+  console.log("inside actionmmm")
   const { topic, shop, session, admin } = await authenticate.webhook(request);
 console.log("inside action")
   if (!admin && topic !== 'SHOP_REDACT') {
