@@ -23,14 +23,23 @@ const shopify = shopifyApp({
     APP_UNINSTALLED:{
       deliveryMethod:DeliveryMethod.Http,
       callbackUrl:"/webhooks",
+      callback:async()=>{
+        console.log("inside product APP_UNINSTALLED");
+      }
     },
     PRODUCTS_CREATE:{
       deliveryMethod:DeliveryMethod.Http,
       callbackUrl:"/webhooks",
+      callback:async()=>{
+        console.log("inside PRODUCTS_CREATE");
+      }
     },
     PRODUCTS_DELETE:{
       deliveryMethod:DeliveryMethod.Http,
       callbackUrl:"/webhooks",
+      callback:async()=>{
+        console.log("inside  PRODUCTS_DELETE");
+      }
     },
     PRODUCTS_UPDATE:{
       deliveryMethod:DeliveryMethod.Http,
