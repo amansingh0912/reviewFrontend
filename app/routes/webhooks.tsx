@@ -6,6 +6,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const { topic, shop, session, admin } = await authenticate.webhook(request);
 
   if (!admin && topic !== 'SHOP_REDACT') {
+    console.log("inside admin");
     // The admin context isn't returned if the webhook fired after a shop was uninstalled.
     // The SHOP_REDACT webhook will be fired up to 48 hours after a shop uninstalls the app.
     // Because of this, no admin context is available.
@@ -16,6 +17,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   // More info: https://shopify.dev/docs/apps/build/cli-for-apps/app-configuration
   switch (topic) {
     case "APP_UNINSTALLED":
+      console.log("inside app uninstalled")
       if (session) {
         await db.session.deleteMany({ where: { shop } });
       }
@@ -24,6 +26,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     case 'PRODUCTS_UPDATE':
         console.log('product was updated');
         return new Response("PRODUCTS_UPDATE handled successfully", { status: 200 });
+        
     case 'PRODUCTS_DELETE':
        console.log('product was DELETED')   
        return new Response("PRODUCTS_DELETE handled successfully", { status: 200 });
