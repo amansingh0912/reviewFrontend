@@ -4,7 +4,7 @@ import db from "../db.server";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   const { topic, shop, session, admin } = await authenticate.webhook(request);
-
+console.log("inside action")
   if (!admin && topic !== 'SHOP_REDACT') {
     console.log("inside admin");
     // The admin context isn't returned if the webhook fired after a shop was uninstalled.
