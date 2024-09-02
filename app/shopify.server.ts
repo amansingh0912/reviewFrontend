@@ -35,10 +35,8 @@ const shopify = shopifyApp({
     PRODUCTS_UPDATE:{
       deliveryMethod:DeliveryMethod.Http,
       callbackUrl:"/webhooks",
-      callback:async(topic,shop,body,webhookId)=>{
+      callback:async()=>{
         console.log("inside product updataee");
-        const payload=JSON.parse(body);
-        console.log("prouduct uppppdataed",payload)
       }
     },
 

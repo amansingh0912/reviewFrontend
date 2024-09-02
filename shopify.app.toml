@@ -3,7 +3,7 @@
 client_id = "7a69f080526f1e581a394322434623dc"
 name = "review-new"
 handle = "review-new"
-application_url = "https://emissions-advance-resort-loss.trycloudflare.com"
+application_url = "https://reviewfrontend.onrender.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_inventory,read_products,write_customers,write_discounts,write_pro
 
 [auth]
 redirect_urls = [
-  "https://emissions-advance-resort-loss.trycloudflare.com/auth/callback",
-  "https://emissions-advance-resort-loss.trycloudflare.com/auth/shopify/callback",
-  "https://emissions-advance-resort-loss.trycloudflare.com/api/auth/callback"
+  "https://reviewfrontend.onrender.com/auth/callback",
+  "https://reviewfrontend.onrender.com/auth/shopify/callback",
+  "https://reviewfrontend.onrender.com/api/auth/callback"
 ]
 
 [webhooks]
